@@ -11,7 +11,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @PropertySource("classpath:testing.properties")
 public class ExternalPropsPropertySourceTestConfig {
 
-    @Value("${guru.jms.server}")
+    @Value("${guru.jms.url}")
     String jmsServer;
 
     @Value("${guru.jms.port}")
