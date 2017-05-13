@@ -1,18 +1,22 @@
-package guru.springframework.external;
+package guru.springframework2.external;
 
-import guru.springframework.config.ExternalPropsMultiFile;
-import guru.springframework.jms.FakeJmsBroker;
+import guru.springframework.SpringCoreDevOpsApplication;
+import guru.springframework2.jms.FakeJmsBroker;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ExternalPropsMultiFile.class)
-public class PropertySourceMultiTest {
+@SpringApplicationConfiguration(SpringCoreDevOpsApplication.class)
+@WebIntegrationTest
+@TestPropertySource("/application.properties")
+public class SpringBootPropertiesTest {
 
     @Autowired
     FakeJmsBroker fakeJmsBroker;
@@ -23,6 +27,6 @@ public class PropertySourceMultiTest {
         assertEquals("10.10.10.123", fakeJmsBroker.getUrl());
         assertEquals(3330, fakeJmsBroker.getPort().intValue());
         assertEquals("Ron", fakeJmsBroker.getUser());
-        assertEquals("$**#%^!!@", fakeJmsBroker.getPassword());
+        assertEquals("Burgundy", fakeJmsBroker.getPassword());
     }
 }

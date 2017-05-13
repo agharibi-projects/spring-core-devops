@@ -1,5 +1,6 @@
-package guru.springframework;
+package guru.springframework2;
 
+import guru.springframework.SpringCoreDevOpsApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;

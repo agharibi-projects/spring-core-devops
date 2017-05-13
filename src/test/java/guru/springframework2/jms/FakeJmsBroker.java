@@ -1,4 +1,4 @@
-package guru.springframework.jms;
+package guru.springframework2.jms;
 
 
 public class FakeJmsBroker {

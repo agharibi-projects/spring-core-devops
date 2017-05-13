@@ -1,8 +1,8 @@
-package guru.springframework.external;
+package guru.springframework2.external;
 
 
-import guru.springframework.config.ExternalPropsPropertySourceTestConfig;
-import guru.springframework.jms.FakeJmsBroker;
+import guru.springframework2.config.ExternalPropsEnvironment;
+import guru.springframework2.jms.FakeJmsBroker;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +12,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ExternalPropsPropertySourceTestConfig.class)
-public class PropertySourceTest {
+@ContextConfiguration(classes = ExternalPropsEnvironment.class)
+public class PropertySourceEnvTest {
 
-    private FakeJmsBroker fakeJmsBroker;
+    @Autowired
+    FakeJmsBroker fakeJmsBroker;
 
     @Test
-    public void testPropSet() throws Exception {
+    public void testPropsSet() throws Exception {
 
         assertEquals("10.10.10.123", fakeJmsBroker.getUrl());
         assertEquals(3330, fakeJmsBroker.getPort().intValue());
@@ -26,8 +27,5 @@ public class PropertySourceTest {
         assertEquals("Burgundy", fakeJmsBroker.getPassword());
     }
 
-    @Autowired
-    public void setFakeJmsBroker(FakeJmsBroker fakeJmsBroker) {
-        this.fakeJmsBroker = fakeJmsBroker;
-    }
+
 }
